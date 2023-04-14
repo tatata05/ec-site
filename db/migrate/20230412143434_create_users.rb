@@ -13,7 +13,7 @@ class CreateUsers < ActiveRecord::Migration[6.1]
       t.string :phone_number, :limit => 16, default: '', null: false
       t.references :user_classification, foreign_key: true
       t.string :company_name, :limit => 128
-      t.boolean :delete_flag
+      t.boolean :delete_flag, default: false, null: false
 
       t.timestamps
     end
