@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_04_14_003213) do
+ActiveRecord::Schema.define(version: 2023_04_14_004455) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -32,7 +32,7 @@ ActiveRecord::Schema.define(version: 2023_04_14_003213) do
     t.string "apartments", default: "", null: false
     t.string "email", default: "", null: false
     t.string "phone_number", default: "", null: false
-    t.bigint "user_classification_id"
+    t.bigint "user_classification_id", null: false
     t.string "company_name", limit: 128
     t.boolean "delete_flag", default: false, null: false
     t.datetime "created_at", precision: 6, null: false
