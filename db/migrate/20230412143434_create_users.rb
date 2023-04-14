@@ -9,7 +9,7 @@ class CreateUsers < ActiveRecord::Migration[6.1]
       t.string :municipality, :limit => 16, default: '', null: false
       t.string :address, :limit => 32, default: '', null: false
       t.string :apartments, :limit => 32, default: '', null: false
-      t.string :email, :limit => 128, default: '', null: false, unique: true
+      t.string :email, :limit => 128, default: '', null: false
       t.string :phone_number, :limit => 16, default: '', null: false
       t.references :user_classification, null: false, foreign_key: true
       t.string :company_name, :limit => 128
@@ -17,5 +17,6 @@ class CreateUsers < ActiveRecord::Migration[6.1]
 
       t.timestamps
     end
+    add_index :users, :email, unique: true
   end
 end

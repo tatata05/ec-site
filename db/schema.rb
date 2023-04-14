@@ -37,6 +37,7 @@ ActiveRecord::Schema.define(version: 2023_04_12_143434) do
     t.boolean "delete_flag", default: false, null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["user_classification_id"], name: "index_users_on_user_classification_id"
   end
 
