@@ -11,7 +11,7 @@ class CreateUsers < ActiveRecord::Migration[6.1]
       t.string :apartments, :limit => 32, default: '', null: false
       t.string :email, :limit => 128, default: '', null: false, unique: true
       t.string :phone_number, :limit => 16, default: '', null: false
-      t.references :user_classification, foreign_key: true
+      t.references :user_classification, null: false, foreign_key: true
       t.string :company_name, :limit => 128
       t.boolean :delete_flag, default: false, null: false
 
