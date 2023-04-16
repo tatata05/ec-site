@@ -35,7 +35,7 @@ ActiveRecord::Schema.define(version: 2023_04_16_055650) do
     t.bigint "sale_status_id", null: false
     t.bigint "product_status_id", null: false
     t.datetime "regist_date"
-    t.boolean "delete_flag", default: false
+    t.boolean "delete_flag", default: false, null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["category_id"], name: "index_products_on_category_id"
