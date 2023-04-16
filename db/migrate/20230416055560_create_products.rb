@@ -3,7 +3,7 @@ class CreateProducts < ActiveRecord::Migration[6.1]
     create_table :products do |t|
       t.string :product_name, :limit => 64
       t.references :category, null: false, foreign_key: true
-      t.integer :price
+      t.integer :price, null: false, default: 0
       t.string :description, :limit => 256
       t.references :sale_status, null: false, foreign_key: true
       t.references :product_status, null: false, foreign_key: true

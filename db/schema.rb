@@ -30,7 +30,7 @@ ActiveRecord::Schema.define(version: 2023_04_16_055650) do
   create_table "products", force: :cascade do |t|
     t.string "product_name", limit: 64
     t.bigint "category_id", null: false
-    t.integer "price"
+    t.integer "price", default: 0, null: false
     t.string "description", limit: 256
     t.bigint "sale_status_id", null: false
     t.bigint "product_status_id", null: false
