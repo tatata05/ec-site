@@ -10,6 +10,7 @@
 end
 
 2.times do |i|
+  user_classification = UserClassification.find_by(user_classification_name: ["管理者", "一般ユーザー"][i])
   User.create!(last_name: "hoge",
               first_name: "geho",
               password: "foobar#{i+1}",
@@ -20,7 +21,7 @@ end
               apartments: "hogeハイム1-1",
               email: "hogehoge#{i+1}@example.com",
               phone_number: "09012345678",
-              user_classification: UserClassification.first,
+              user_classification: user_classification,
               company_name: "株式会社あんず",
               delete_flag: false)
 end
