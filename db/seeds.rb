@@ -11,8 +11,9 @@
   Category.create(category_name: category[i])
 end
 
-4.times do |i|
-  ProductStatus.create(product_status_name: "foobar#{i}")
+2.times do |i|
+  status = ["新品", "中古"]
+  ProductStatus.create(product_status_name: status[i])
 end
 
 4.times do |i|
