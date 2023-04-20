@@ -26,12 +26,16 @@ end
   from = Date.new(2023,01,01)
   to = Date.new(2023,12,31)
   user = [1, 1, 2, 2]
-  Product.create(product_name: "hogebar#{i}",
-                  category_id: i+1,
+  name = ["鉛筆", "椅子", "筆箱", "机"]
+  category = [1, 2, 1, 2]
+  description = ["芯が折れにくくて使いやすい", "腰が痛くなりにくい", "使いやすいサイズ感", "研究を重ねて考えられた使いやすい高さ"]
+  status = [1, 2, 1, 2]
+  Product.create(product_name: name[i],
+                  category_id: category[i],
                   price: (i+1)*100,
-                  description: "hogehogehoge#{i}",
-                  sale_status_id: i+1,
-                  product_status_id: i+1,
+                  description: description[i],
+                  sale_status_id: status[i],
+                  product_status_id: status[i],
                   regist_date: Random.rand(from..to),
                   user_id: user[i])
 end
