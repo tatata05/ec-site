@@ -16,8 +16,9 @@ end
   ProductStatus.create(product_status_name: status[i])
 end
 
-4.times do |i|
-  SaleStatus.create(sale_status_name: "hogefoobar#{i}")
+2.times do |i|
+  status = ["販売中", "売り切れ"]
+  SaleStatus.create(sale_status_name: status[i])
 end
 
 #user_idカラムが存在するため、user作成よりも後に記述
