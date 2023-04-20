@@ -40,7 +40,7 @@ end
                   user_id: user[i])
 end
 
-4.times do |i|
+2.times do |i|
   from = Date.new(2023,01,01)
   to = Date.new(2023,12,31)
   Purchase.create(purchase_price: (i+1)*100,
