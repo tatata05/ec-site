@@ -6,8 +6,9 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-4.times do |i|
-  Category.create(category_name: "hoge#{i}")
+2.times do |i|
+  category = ["文房具", "家具"]
+  Category.create(category_name: category[i])
 end
 
 4.times do |i|
