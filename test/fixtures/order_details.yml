@@ -1,0 +1,21 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  products_id: MyString
+  order_id: MyString
+  shipment_status_id: MyString
+  order_quantity: 1
+  shipment_date: 2023-04-24 15:08:52
+  products_id: one
+  order_id: one
+  shipment_status_id: one
+
+two:
+  products_id: MyString
+  order_id: MyString
+  shipment_status_id: MyString
+  order_quantity: 1
+  shipment_date: 2023-04-24 15:08:52
+  products_id: two
+  order_id: two
+  shipment_status_id: two
