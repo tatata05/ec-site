@@ -1,4 +1,3 @@
 class ShipmentStatus < ApplicationRecord
-      #has_many :user, dependent: :destroy
-      #has_many :products, dependent: :destroy
+   has_many :order_details, dependent: :destroy
 end
