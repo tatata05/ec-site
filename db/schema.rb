@@ -99,7 +99,7 @@ ActiveRecord::Schema.define(version: 2023_04_24_150852) do
   end
 
   create_table "users", force: :cascade do |t|
-    t.string "password", limit: 64, default: "", null: false
+    t.string "password_digest", limit: 64, default: "", null: false
     t.string "last_name", limit: 16, default: "", null: false
     t.string "first_name", limit: 16, default: "", null: false
     t.string "zipcode", limit: 16, default: "", null: false
