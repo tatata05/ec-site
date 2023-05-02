@@ -35,7 +35,6 @@ ActiveRecord::Schema.define(version: 2023_04_24_150852) do
   end
 
   create_table "orders", force: :cascade do |t|
-    t.string "name"
     t.datetime "order_date"
     t.string "order_number"
     t.bigint "user_id", null: false
