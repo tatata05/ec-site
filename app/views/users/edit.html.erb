@@ -111,16 +111,16 @@
   <main>
 
     <h2 class="text-center mt-5">ユーザ情報修正</h2>
-      <%= form_with(model: @user, local: true) do |form| %>
+      <%= form_with(model: @user, local: true) do |f| %>
         <table width="50%" style="margin-left:350px">
           <tr height="40">
             <td align="center">
               氏名<span style="float: right">姓</span>
             </td>
             <td>
-              <%= form.text_field :last_name, style: "margin-left:10px", maxlength: 10, required: true %>
+              <%= f.text_field :last_name, style: "margin-left:10px", maxlength: 10, required: true %>
               <span style="margin-right:35px"></span>名
-              <%= form.text_field :first_name, style: "margin-left:10px", maxlength: 10, required: true %>
+              <%= f.text_field :first_name, style: "margin-left:10px", maxlength: 10, required: true %>
             </td>
           </tr>
 
@@ -129,7 +129,7 @@
               住所<span style="float: right">〒</span>
             </td>
             <td colspan="2">
-              <%= form.text_field :zipcode, style: "margin-left:10px", size: 25, pattern: '\d{3}-?\d{4}', required: true %>
+              <%= f.text_field :zipcode, style: "margin-left:10px", size: 25, pattern: '\d{3}-?\d{4}', required: true %>
             </td>
           </tr>
 
@@ -138,7 +138,7 @@
               都道府県
             </td>
             <td colspan="2">
-            <%= form.text_field :prefecture, style: "margin-left:10px", size: 50, maxlength: 5, required: true %>
+            <%= f.text_field :prefecture, style: "margin-left:10px", size: 50, maxlength: 5, required: true %>
             </td>
           </tr>
 
@@ -147,7 +147,7 @@
               市町村区
             </td>
             <td colspan="2">
-              <%= form.text_field :municipality, style: "margin-left:10px", size: 50, maxlength: 10, required: true %>
+              <%= f.text_field :municipality, style: "margin-left:10px", size: 50, maxlength: 10, required: true %>
             </td>
           </tr>
 
@@ -156,7 +156,7 @@
               番地
             </td>
             <td colspan="2">
-              <%= form.text_field :address, style: "margin-left:10px", size: 50, maxlength: 15, required: true %>
+              <%= f.text_field :address, style: "margin-left:10px", size: 50, maxlength: 15, required: true %>
             </td>
           </tr>
 
@@ -165,7 +165,7 @@
               マンション<br>部屋番号</br>
             </td>
             <td colspan="2">
-              <%= form.text_field :apartments, style: "margin-left:10px", size: 50, maxlength: 20, required: true %>
+              <%= f.text_field :apartments, style: "margin-left:10px", size: 50, maxlength: 20, required: true %>
             </td>
           </tr>
 
@@ -174,7 +174,7 @@
               メールアドレス
             </td>
             <td colspan="2">
-              <%=form.email_field :email, style: "margin-left:10px", size: 65 %>
+              <%= f.email_field :email, style: "margin-left:10px", size: 65 %>
             </td>
           </tr>
 
@@ -183,7 +183,7 @@
               電話番号
             </td>
             <td colspan="2">
-              <%= form.text_field :phone_number, style: "margin-left:10px", size: 65, pattern: "(^[0-9]+$){1,15}", required: true %>
+              <%= f.text_field :phone_number, style: "margin-left:10px", size: 65, pattern: "(^[0-9]+$){1,15}", required: true %>
             </td>
           </tr>
         </table>
