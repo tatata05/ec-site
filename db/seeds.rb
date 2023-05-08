@@ -6,7 +6,7 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-#ActiveRecord::Base.transaction do
+ActiveRecord::Base.transaction do
   2.times do |i|
     UserClassification.create!(user_classification_name: ["管理者", "一般ユーザー"][i])
   end
