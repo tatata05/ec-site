@@ -16,7 +16,7 @@ ActiveRecord::Base.transaction do
     user_classification = UserClassification.find_by(user_classification_name: ["管理者", "一般ユーザー"][i])
     User.create!(last_name: "hoge",
                  first_name: "geho",
-                 password: "foobar#{i + 1}",
+                 password_digest: "foobar#{i + 1}",
                  zipcode: "1111111",
                  prefecture: "東京都",
                  municipality: "港区",

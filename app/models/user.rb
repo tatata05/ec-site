@@ -1,13 +1,13 @@
 class User < ApplicationRecord
   belongs_to :user_classification
-   has_many :orders, dependent: :destroy
-   has_many :products, dependent: :destroy
+  has_many :orders, dependent: :destroy
+  has_many :products, dependent: :destroy
 
-  VALID_PASSWORD_REGEX = /\A(?=.*?[a-z])(?=.*?[\d])[a-z\d]+\z/i
+  VALID_PASSWORD_REGEX = /\A(?=.*?[a-z])(?=.*?\d)[a-z\d]+\z/i
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
-  #has_secure_password
-  validates :password, presence: true, length: { minimum: 6, maximum: 15 },  
-             format: { with: VALID_PASSWORD_REGEX }, allow_nil: true
+  has_secure_password
+  validates :password_digest, presence: true, length: { minimum: 6, maximum: 15 },
+                       format: { with: VALID_PASSWORD_REGEX }, allow_nil: true
   validates :last_name, presence: true, length: { maximum: 10 }
   validates :first_name, presence: true, length: { maximum: 10 }
   validates :zipcode, presence: true, length: { is: 7 }, format: { with: /\A[0-9]+\z/ }
