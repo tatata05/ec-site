@@ -151,11 +151,10 @@ sans-serif;
       </div>
     </div>
     <div class="container">
+      <p>全<%= @products.count %>件</p>
       <% if @products.nil? %>
-        <p>全0件</p>
         <h2 class="text-center">検索結果がありませんでした</h2>
       <% else %>
-        <p>全<%= @products.count %>件</p>
         <table class="table table-hover" border="1" style="border-collapse: collapse">
           <thead>
             <tr class=" table-header">
