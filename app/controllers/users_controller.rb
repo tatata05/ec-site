@@ -8,11 +8,11 @@ class UsersController < ApplicationController
   end
 
   def update
-    user = User.find_by(id: params[:id])
-    user.assign_attributes(user_params)
-    if user.save
+    @user = User.find_by(id: params[:id])
+    @user.assign_attributes(user_params)
+    if @user.save
       flash[:success] = "更新しました"
-      redirect_to user
+      redirect_to @user
     else
       flash.now[:danger] = "更新に失敗しました"
       render 'edit'
