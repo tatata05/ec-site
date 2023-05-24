@@ -9,6 +9,7 @@ include SessionsHelper
       login(user)
       redirect_to user
     else
+      flash.now[:danger] = "ログインに失敗しました"
       render 'new'
     end
   end
