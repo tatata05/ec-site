@@ -29,7 +29,7 @@ class UsersController < ApplicationController
   def logged_in_user
     unless logged_in?
       flash[:danger] = "ログインしてください"
-      redirect_to login_url
+      redirect_to login_path
     end
   end
 
@@ -37,7 +37,9 @@ class UsersController < ApplicationController
     @user = User.find_by(id: params[:id])
     if current_user != @user
       flash[:danger] = "他人の情報にアクセスすることはできません"
-      redirect_to root_path
+      # redirect_to login_path は、後で root_path に修正
+      # redirect_to root_path
+      redirect_to login_path
     end
   end
 
