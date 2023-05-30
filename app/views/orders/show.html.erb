@@ -1,139 +1,72 @@
-#order画面
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html lang="ja">
+<%= provide(:title, "注文履歴") %>
 
-<body>
-  <main>
-    <div class="container my-4 mt-5">
-      <a href="#" class="btn btn-secondary py-0">直近3ヶ月の注文を表示</a>
-    </div>
-
-    <div class="container">
-      <hr style="width:90%; opacity:0.9;">
-      <table class="table">
-        <thead class="table h4">
-
-          <tr>
-            <th class="text-start" width="5%">
-              No
-            </th>
-            <th class="text-start" width="20%">
-              注文番号
-            </th>
-            <th class="text-start" width="40%">
-              お届け先
-            </th>
-            <th class="text-start" width="25%">
-              備考
-            </th>
-            <th class="text-start border-0" width="20%"></th>
-          </tr>
-
-        </thead>
-        <tbody class="h6 font-weight-normal">
-          <tr>
-            <th class="font-weight-normal" scope="row">
-              1
-            </th>
-            <td class="text-left">
-              1234567890
-            </td>
-            <td class="text-left">
-              〒○○○-○○○○<br />富山県南砺市○○ ○-○-○<br />○○ ✕✕ 様
-            </td>
-            <td class="text-left">
-              注文日時：2020/10/16<br />注文状態：準備中
-            </td>
-            <td class="border-0 align-middle">
-              <a href="#" class="btn btn-primary btn-sm">詳細</a>
-            </td>
-          </tr>
-
-          <tr>
-            <th class="font-weight-normal" scope="row">
-              2
-            </th>
-            <td class="text-left">
-              1685479246
-            </td>
-            <td class="text-left">
-              〒○○○-○○○○<br />富山県南砺市○○ ○-○-○<br />○○ ✕✕ 様
-            </td>
-            <td class="text-left">
-              注文日時：2020/09/05<br />注文状態：準備中
-            </td>
-            <td class="border-0 align-middle">
-              <a href="#" class="btn btn-primary btn-sm">詳細</a>
-            </td>
-          </tr>
-
-          <tr>
-            <th class="font-weight-normal" scope="row">
-              3
-            </th>
-            <td class="text-left">
-              169586325
-            </td>
-            <td class="text-left">
-              〒○○○-○○○○<br />富山県南砺市○○ ○-○-○<br />○○ ✕✕ 様
-            </td>
-            <td class="text-left">
-              注文日時：2020/08/21<br />注文状態：準備中
-            </td>
-            <td class="border-0 align-middle">
-              <a href="#" class="btn btn-primary btn-sm">詳細</a>
-            </td>
-          </tr>
-
-          <tr>
-            <th class="font-weight-normal" scope="row">
-              4
-            </th>
-            <td class="text-left">
-              169586325
-            </td>
-            <td class="text-left">
-              〒○○○-○○○○<br />富山県南砺市○○ ○-○-○<br />○○ ✕✕ 様
-            </td>
-            <td class="text-left">
-              注文日時：2020/04/16<br />注文状態：準備中
-            </td>
-            <td class="border-0 align-middle">
-              <a href="#" class="btn btn-primary btn-sm">詳細</a>
-            </td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-
-    <div class="container">
-      <nav aria-label="...">
-        <ul class="pagination justify-content-center">
-          <li class="page-item active">
-            <a class="page-link" href="#">1<span class="sr-only">(current)</span></a>
-          </li>
-          <li class="page-item"><a class="page-link" href="#">2</a></li>
-          <li class="page-item"><a class="page-link" href="#">3</a></li>
-        </ul>
-      </nav>
-    </div>
-  </main>
-</body>
-
-#order_not_found
 <body>
   <main>
     <div class="container">
       <div class="jumbotron text-center bg-white"></div>
       <div class="mt-5 text-center">
-        <h1>該当の注文は見つかりませんでした…</h1>
-        <p class="mt-5">注文履歴画面に戻り、やり直してください</p>
-        <button type="button" class="btn btn-primary">注文履歴へ</button>
+        <% if @order.nil? %>
+          <h1>該当の注文は見つかりませんでした…</h1>
+          <p class="mt-5">注文履歴画面に戻り、やり直してください</p>
+          <a href="#" button type="button" class="btn btn-primary">注文履歴へ</button>
+        <% else %>
+          <div class="jumbotron bg-white">
+            <div class="card border-dark">
+              <div class="cord-body ml-3">
+                <h4 class="mt-4">お届け先</h4>
+                <p class="ml-3">〒<%=  @order.user.zipcode%> <%= @order.user.prefecture %><%= @order.user.municipality %> <%= @order.user.address%> <%= @order.user.apartments%></p>
+                <p class="offset-sm-2"><%= @order.user.last_name%> <%= @order.user.first_name%></p>
+              </div>
+            </div>
+            <div class="mt-5 ml-3">
+              <p>注文番号：<%= @order.order_number %></p>
+              <p>注文状態：<%= @order.order_preparing? ? "準備中" : "発送済" %></p>
+            </div>
+            <div class="text-end">
+              <% if @order.order_preparing? %> 
+                <button type="button" class="btn btn-danger"> 注文をキャンセルする</button>
+              <% end %>
+            </div>
+            <table class="table table-borderless mt-3">
+              <thead>
+                <tr>
+                  <th scope="col" class="border-top border-bottom">No</th>
+                  <th scope="col" class="border-top border-bottom">商品名</th>
+                  <th scope="col" class="border-top border-bottom">商品カテゴリ</th>
+                  <th scope="col" class="border-top border-bottom">値段</th>
+                  <th scope="col" class="border-top border-bottom">個数</th>
+                  <th scope="col" class="border-top border-bottom">小計</th>
+                  <th scope="col" class="border-top border-bottom">備考</th>
+                </tr>
+              </thead>
+              <tbody>
+                <% @order.order_details.each_with_index do |order_detail, i| %>
+                  <tr>
+                    <!- TODO: 通し番号を表示させること。1,2,3,...と順番に表示されればOK ->
+                    <th scope="row"><%= (i + 1) %></th>
+                    <td><%= order_detail.product.product_name%></td>
+                    <td><%= order_detail.product.category.category_name%></td>
+                    <td><%= order_detail.product.price%></td>
+                    <td><%= order_detail.order_quantity%></td>
+                    <td><%= order_detail.order_quantity*order_detail.product.price%></td>
+                    <td>注文状態：<%= order_detail.shipment_status.shipment_status_name%> </td>
+                  </tr>
+                <% end %>
+              </tbody>
+            </table>
+            <div class="border-top border-dark">
+              <div class="mt-2 offset-sm-6">
+                <p class="ml-4">合計<%= @order.total_price %>円</p>
+              </div>
+            </div>
+            <div class="text-end mb-5">
+              <button type="button" class="btn btn-info">注文履歴に戻る</button>
+            </div>
+          </div>
+        <% end %>
       </div>
-    </div>
     </div>
   </main>
 </body>
-
-</html>
-
