@@ -20,6 +20,12 @@ class UsersController < ApplicationController
     end
   end
 
+  def destroy
+    User.find_by(id: params[:id]).destroy
+    # TODO: redirect_to login_path は、後で root_path に修正
+    # redirect_to root_path 
+    redirect_to login_path
+  end
   private
   
   def user_params
@@ -37,7 +43,7 @@ class UsersController < ApplicationController
     @user = User.find_by(id: params[:id])
     if current_user != @user
       flash[:danger] = "他人の情報にアクセスすることはできません"
-      # redirect_to login_path は、後で root_path に修正
+      # TODO: redirect_to login_path は、後で root_path に修正
       # redirect_to root_path
       redirect_to login_path
     end
