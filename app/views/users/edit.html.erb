@@ -88,12 +88,12 @@
             <%= f.submit "修正", class: "btn btn-primary" %>
           </div>
         </div>
-        <% end %>
         <div class="col-5 offset-2">
         <%= link_to "退会", @user, method: :delete,
             data: { confirm: "ユーザーデータが全て削除されます。本当に退会しますか？" }, class: "btn btn-primary" %>
         </div>
       </div>
+    <% end %>
   </main>
 </body>
 
