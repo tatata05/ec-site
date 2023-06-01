@@ -4,14 +4,14 @@
 
 <body>
   <main>
+  <% if @order.nil? %>
     <div class="container">
       <div class="jumbotron text-center bg-white"></div>
       <div class="mt-5 text-center">
-        <% if @order.nil? %>
           <h1>該当の注文は見つかりませんでした…</h1>
           <p class="mt-5">注文履歴画面に戻り、やり直してください</p>
           <a href="#" button type="button" class="btn btn-primary">注文履歴へ</button>
-        <% else %>
+   <% else %>
           <div class="jumbotron bg-white">
             <div class="card border-dark">
               <div class="cord-body ml-3">
@@ -24,11 +24,11 @@
               <p>注文番号：<%= @order.order_number %></p>
               <p>注文状態：<%= @order.order_preparing? ? "準備中" : "発送済" %></p>
             </div>
-            <div class="text-end">
-              <% if @order.order_preparing? %> 
-                <button type="button" class="btn btn-danger"> 注文をキャンセルする</button>
-              <% end %>
-            </div>
+            <% if @order.order_preparing? %>
+              <div class="text-end"> 
+                  <button type="button" class="btn btn-danger"> 注文をキャンセルする</button>
+              </div>
+            <% end %>
             <table class="table table-borderless mt-3">
               <thead>
                 <tr>
@@ -41,21 +41,20 @@
                   <th scope="col" class="border-top border-bottom">備考</th>
                 </tr>
               </thead>
-              <tbody>
                 <% @order.order_details.each_with_index do |order_detail, i| %>
-                  <tr>
-                    <!- TODO: 通し番号を表示させること。1,2,3,...と順番に表示されればOK ->
-                    <th scope="row"><%= (i + 1) %></th>
-                    <td><%= order_detail.product.product_name%></td>
-                    <td><%= order_detail.product.category.category_name%></td>
-                    <td><%= order_detail.product.price%></td>
-                    <td><%= order_detail.order_quantity%></td>
-                    <td><%= order_detail.order_quantity*order_detail.product.price%></td>
-                    <td>注文状態：<%= order_detail.shipment_status.shipment_status_name%> </td>
-                  </tr>
-                <% end %>
-              </tbody>
-            </table>
+                  <tbody>
+                    <tr>
+                      <th scope="row"><%= (i + 1) %></th>
+                      <td><%= order_detail.product.product_name%></td>
+                      <td><%= order_detail.product.category.category_name%></td>
+                      <td><%= order_detail.product.price%></td>
+                      <td><%= order_detail.order_quantity%></td>
+                      <td><%= order_detail.order_quantity*order_detail.product.price%></td>
+                      <td>注文状態：<%= order_detail.shipment_status.shipment_status_name%> </td>
+                    </tr>
+                  </tbody>
+               <% end %>
+             </table>
             <div class="border-top border-dark">
               <div class="mt-2 offset-sm-6">
                 <p class="ml-4">合計<%= @order.total_price %>円</p>
@@ -65,8 +64,8 @@
               <button type="button" class="btn btn-info">注文履歴に戻る</button>
             </div>
           </div>
-        <% end %>
+        </div>
       </div>
-    </div>
+    <% end %>
   </main>
 </body>

@@ -10,6 +10,6 @@ class Order < ApplicationRecord
   
 
   def total_price
-    order_details.sum(&:product_price)
+    order_details.sum(&:subtotals)
   end
 end
