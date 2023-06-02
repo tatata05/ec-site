@@ -9,7 +9,7 @@ class UsersController < ApplicationController
 
   def create
     @user = User.new(user_params)
-    @user.user_classification_id = 2
+    @user.user_classification_id = UserClassification.find_by(user_classification_name: "一般ユーザー").id
     if @user.save
       flash[:success] = "ユーザーを登録しました。こちらからログインしてください。"
       redirect_to login_path
