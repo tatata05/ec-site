@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   delete '/logout', to: 'sessions#destroy'
   get '/signup', to: 'users#new'
   post '/signup', to: 'users#create'
-  resources :users, except: [:new, :create]
+  resources :users, only: [:show, :edit, :update, :destroy]
   resources :products
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
