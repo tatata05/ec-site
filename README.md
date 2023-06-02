@@ -136,7 +136,7 @@ https://qiita.com/yama_ryoji/items/1de1f2e9e206382c4aa5
 コード上でbinding.pryを挟んだ時に、dockerで確認する方法は
 以下のコマンドをターミナルで実行してください
 ```
-docker attach qa-rails-ec-training-[クラス名]-web-1
+docker attach qa-rails-ec-training-[クラス名]_web_1
 ```
 そうすると、docker上でbinding.pryを使えるようになります。
 ただ、どこで止まっているかがわからないので、上記コマンドの後に
