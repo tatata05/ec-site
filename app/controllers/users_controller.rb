@@ -16,33 +16,33 @@ class UsersController < ApplicationController
       redirect_to @user
     else
       flash.now[:danger] = "更新に失敗しました"
-      render 'edit'
+      render "edit"
     end
   end
 
   def destroy
-    User.find_by(id: params[:id]).destroy
+    User.find_by(id: params[:id]).destroy!
     redirect_to root_path
   end
+
   private
-  
-  def user_params
-    params.require(:user).permit(:last_name, :first_name, :zipcode, :prefecture, :municipality, :address, :apartments, :email, :phone_number)
-  end
-  
-  def logged_in_user
-    unless logged_in?
-      flash[:danger] = "ログインしてください"
-      redirect_to login_path
-    end
-  end
 
-  def correct_user
-    @user = User.find_by(id: params[:id])
-    if current_user != @user
-      flash[:danger] = "他人の情報にアクセスすることはできません"
-      redirect_to root_path
+    def user_params
+      params.require(:user).permit(:last_name, :first_name, :zipcode, :prefecture, :municipality, :address, :apartments, :email, :phone_number)
     end
-  end
 
+    def logged_in_user
+      unless logged_in?
+        flash[:danger] = "ログインしてください"
+        redirect_to login_path
+      end
+    end
+
+    def correct_user
+      @user = User.find_by(id: params[:id])
+      if current_user != @user
+        flash[:danger] = "他人の情報にアクセスすることはできません"
+        redirect_to root_path
+      end
+    end
 end
